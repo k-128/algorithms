@@ -15,7 +15,7 @@ def insertion_sort(sequence: List[int]) -> List[int]:
     return sequence
 
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     seq = [16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4]
     print(f"Initial sequence: {seq}")
     print(f"Sorted sequence : {insertion_sort(seq)}")
