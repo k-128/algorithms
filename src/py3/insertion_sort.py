@@ -5,7 +5,7 @@ def insertion_sort(sequence: List[int]) -> List[int]:
     for i in range(len(sequence) - 1):
         i_insert = i
         key = sequence[i + 1]
-        while key < sequence[i_insert] and i_insert >= 0:
+        while (i_insert >= 0) and (key < sequence[i_insert]):
             sequence[i_insert + 1] = sequence[i_insert]
             i_insert -= 1
 
