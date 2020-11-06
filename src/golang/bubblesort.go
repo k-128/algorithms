@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func BubbleSort(sequence []int) []int {
+func bubbleSort(sequence []int) []int {
 	var isSorted bool
 	for i := 0; i < len(sequence)-1; i++ {
 		isSorted = true
@@ -19,7 +19,7 @@ func BubbleSort(sequence []int) []int {
 	return sequence
 }
 
-func BubbleSortTest() {
+func bubbleSortTest() {
 	seq := []int{16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4}
 	fmt.Printf("Initial sequence: %v\n", seq)
 	fmt.Printf("Sorted sequence : %v\n", BubbleSort(seq))

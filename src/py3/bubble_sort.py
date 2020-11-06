@@ -18,4 +18,4 @@ def bubble_sort(sequence: List[int]) -> List[int]:
 if __name__ == "__main__":
     seq = [16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4]
     print(f"Initial sequence: {seq}")
-    print(f"Sorted  sequence: {bubble_sort(seq)}")
+    print(f"Sorted sequence : {bubble_sort(seq)}")

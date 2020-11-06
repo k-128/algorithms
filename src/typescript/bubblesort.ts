@@ -19,7 +19,7 @@ const bubbleSort = (sequence: number[]): number[] => {
 const bubbleSortTest = () => {
   let seq = [16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4]
   console.log(`Initial sequence: ${seq}`)
-  console.log(`Sorted  sequence: ${bubbleSort(seq)}`)
+  console.log(`Sorted sequence : ${bubbleSort(seq)}`)
 }
 
 bubbleSortTest()
