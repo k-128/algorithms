@@ -22,5 +22,5 @@ func bubbleSort(sequence []int) []int {
 func bubbleSortTest() {
 	seq := []int{16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4}
 	fmt.Printf("Initial sequence: %v\n", seq)
-	fmt.Printf("Sorted sequence : %v\n", BubbleSort(seq))
+	fmt.Printf("Sorted sequence : %v\n", bubbleSort(seq))
 }
