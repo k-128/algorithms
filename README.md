@@ -68,6 +68,9 @@
   * Time: O(n(log(n))²), O(n²), Θ(n(log(n))²), Θ(n²), Ω(n log(n))
   * Space: O(1)
 - Impl:
+  * C++: [shell_sort.cpp](/src/cpp/shell_sort.cpp)
+  * Golang: [shellsort.go](/src/golang/shellsort.go)
   * Python3: [shell_sort.py](/src/py3/shell_sort.py)
+  * Typescript: [shellSort.ts](/src/typescript/shellSort.ts)
 
 <br />
