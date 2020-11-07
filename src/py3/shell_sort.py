@@ -4,7 +4,7 @@ from typing import List
 
 def get_gaps(size: int) -> List[int]:
     temp       = size // 2
-    gaps       = [temp, ]
+    gaps       = [temp]
     while temp > 1:
         temp = temp // 2
         gaps.append(temp)
@@ -14,7 +14,7 @@ def get_gaps(size: int) -> List[int]:
 
 def get_gaps_knuth(size: int) -> List[int]:
     temp = 1
-    gaps = [temp, ]
+    gaps = [temp]
     while temp < size:
         temp = temp * 3 + 1
         gaps.append(temp)
