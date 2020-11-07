@@ -8,9 +8,7 @@ const insertionSort = (sequence: number[]): number[] => {
       sequence[i_insert + 1] = sequence[i_insert]
       i_insert--
     }
-    if (i != i_insert) {
-      sequence[i_insert + 1] = key
-    }
+    sequence[i_insert + 1] = key
   }
   return sequence
 }

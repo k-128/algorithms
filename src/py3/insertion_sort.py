@@ -9,8 +9,7 @@ def insertion_sort(sequence: List[int]) -> List[int]:
             sequence[i_insert + 1] = sequence[i_insert]
             i_insert -= 1
 
-        if i != i_insert:
-            sequence[i_insert + 1] = key
+        sequence[i_insert + 1] = key
 
     return sequence
 
