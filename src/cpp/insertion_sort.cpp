@@ -3,11 +3,9 @@
 
 
 std::vector<int> InsertionSort(std::vector<int> sequence) {
-    int i_insert;
-    int key;
     for (unsigned int i = 0; i < sequence.size() - 1; i++) {
-        i_insert = i;
-        key = sequence[i + 1];
+        int i_insert = i;
+        int key = sequence[i + 1];
         while ((i_insert >= 0) && (key < sequence[i_insert])) {
             sequence[i_insert + 1] = sequence[i_insert];
             i_insert--;

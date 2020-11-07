@@ -3,11 +3,9 @@ package main
 import "fmt"
 
 func insertionSort(sequence []int) []int {
-	var i_insert int
-	var key int
 	for i := 0; i < len(sequence)-1; i++ {
-		i_insert = i
-		key = sequence[i+1]
+		var i_insert = i
+		var key = sequence[i+1]
 		for (i_insert >= 0) && (key < sequence[i_insert]) {
 			sequence[i_insert+1] = sequence[i_insert]
 			i_insert--
