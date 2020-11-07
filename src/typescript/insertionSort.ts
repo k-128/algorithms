@@ -1,10 +1,8 @@
 const insertionSort = (sequence: number[]): number[] => {
-  let i_insert: number
-  let key: number
   for (let i = 0; i < sequence.length - 1; i++) {
-    i_insert = i
-    key = sequence[i + 1]
-    while ((i_insert >=0) && (key < sequence[i_insert])) {
+    let i_insert = i
+    let key = sequence[i + 1]
+    while ((i_insert >= 0) && (key < sequence[i_insert])) {
       sequence[i_insert + 1] = sequence[i_insert]
       i_insert--
     }
