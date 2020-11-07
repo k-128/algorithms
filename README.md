@@ -63,6 +63,18 @@
 
 <br />
 
+##### Selection sort
+- Complexity:
+  * Time: O(n²), Θ(n²), θ(n log(n)), Ω(n²)
+  * Space: O(n)
+- Impl:
+  * C++: [selection_sort.cpp](/src/cpp/selection_sort.cpp)
+  * Golang: [selectionsort.go](/src/golang/selectionsort.go)
+  * Python3: [selection_sort.py](/src/py3/selection_sort.py)
+  * Typescript: [selectionSort.ts](/src/typescript/selectionSort.ts)
+
+<br />
+
 ##### Shell sort
 - Complexity:
   * Time: O(n(log(n))²), O(n²), Θ(n(log(n))²), Θ(n²), Ω(n log(n))
