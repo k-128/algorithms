@@ -10,18 +10,27 @@
 
 <br />
 
-1. C++
-- [linear_search.cpp](/src/cpp/linear_search.cpp)
-- [binary_search.cpp](/src/cpp/binary_search.cpp)
-2. Golang
-- [linearsearch.go](/src/golang/linearsearch.go)
-- [binarysearch.go](/src/golang/binarysearch.go)
-3. Python3
-- [linear_search.py](/src/py3/linear_search.py)
-- [binary_search.py](/src/py3/binary_search.py)
-4. Typescript
-- [linearSearch.ts](/src/typescript/linearSearch.ts)
-- [binarySearch.ts](/src/typescript/binarySearch.ts)
+##### Binary search
+- Complexity:
+  * Time: O(log(n)), θ(log(n)), Ω(1)
+  * Space: S(n)
+- Impl:
+  * C++: [binary_search.cpp](/src/cpp/binary_search.cpp)
+  * Golang: [binarysearch.go](/src/golang/binarysearch.go)
+  * Python3: [binary_search.py](/src/py3/binary_search.py)
+  * Typescript: [binarySearch.ts](/src/typescript/binarySearch.ts)
+
+<br />
+
+##### Linear search
+- Complexity:
+  * Time: O(n), θ(n), Ω(1)
+  * Space: S(n)
+- Impl:
+  * C++: [linear_search.cpp](/src/cpp/linear_search.cpp)
+  * Golang: [linearsearch.go](/src/golang/linearsearch.go)
+  * Python3: [linear_search.py](/src/py3/linear_search.py)
+  * Typescript: [linearSearch.ts](/src/typescript/linearSearch.ts)
 
 <br />
 
@@ -30,17 +39,26 @@
 
 <br />
 
-1. C++
-- [bubble_sort.cpp](/src/cpp/bubble_sort.cpp)
-- [insertion_sort.cpp](/src/cpp/insertion_sort.cpp)
-2. Golang
-- [bubblesort.go](/src/golang/bubblesort.go)
-- [insertionsort.go](/src/golang/insertionsort.go)
-3. Python3
-- [bubble_sort.py](/src/py3/bubble_sort.py)
-- [insertion_sort.py](/src/py3/insertion_sort.py)
-4. Typescript
-- [bubbleSort.ts](/src/typescript/bubbleSort.ts)
-- [insertionSort.ts](/src/typescript/insertionSort.ts)
+##### Bubble sort
+- Complexity:
+  * Time: O(n²), θ(n²), Ω(n)
+  * Space: S(n)
+- Impl:
+  * C++: [bubble_sort.cpp](/src/cpp/bubble_sort.cpp)
+  * Golang: [bubblesort.go](/src/golang/bubblesort.go)
+  * Python3: [bubble_sort.py](/src/py3/bubble_sort.py)
+  * Typescript: [bubbleSort.ts](/src/typescript/bubbleSort.ts)
+
+<br />
+
+##### Insertion sort
+- Complexity:
+  * Time: O(n²), θ(n²), Ω(n)
+  * Space: S(n)
+- Impl:
+  * C++: [insertion_sort.cpp](/src/cpp/insertion_sort.cpp)
+  * Golang: [insertionsort.go](/src/golang/insertionsort.go)
+  * Python3: [insertion_sort.py](/src/py3/insertion_sort.py)
+  * Typescript: [insertionSort.ts](/src/typescript/insertionSort.ts)
 
 <br />
