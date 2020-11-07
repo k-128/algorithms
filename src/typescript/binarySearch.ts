@@ -2,7 +2,7 @@ const binarySearch = (sequence: number[], query: number): number => {
   let low = 0
   let high = sequence.length - 1
   while (low <= high) {
-    let mid = (low + high) >> 2
+    let mid = Math.floor((low + high) / 2)
     if (sequence[mid] == query) {
       return mid
     } else if (sequence[mid] < query) {
