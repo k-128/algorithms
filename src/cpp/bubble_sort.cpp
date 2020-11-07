@@ -3,9 +3,8 @@
 
 
 std::vector<int> BubbleSort(std::vector<int> sequence) {
-    bool isSorted;
     for (unsigned int i = 0; i < sequence.size() - 1; i++) {
-        isSorted = true;
+        bool isSorted = true;
         for (unsigned int j = 0; j < sequence.size() - 1 - i; j++) {
             if (sequence[j] > sequence[j + 1]) {
                 isSorted = false;
