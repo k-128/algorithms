@@ -3,9 +3,8 @@ package main
 import "fmt"
 
 func bubbleSort(sequence []int) []int {
-	var isSorted bool
 	for i := 0; i < len(sequence)-1; i++ {
-		isSorted = true
+		var isSorted = true
 		for j := 0; j < len(sequence)-1-i; j++ {
 			if sequence[j] > sequence[j+1] {
 				isSorted = false
