@@ -1,8 +1,8 @@
 const getGaps = (size: number): number[] => {
-  let temp = size >> 2
+  let temp = Math.floor(size / 2)
   let gaps = [temp]
   while (temp > 1) {
-    temp = temp >> 2
+    temp = Math.floor(temp / 2)
     gaps.push(temp)
   }
   return gaps
@@ -13,7 +13,7 @@ const getGapsKnuth = (size: number): number[] => {
   let temp = 1
   let gaps = [temp]
   while (temp < size) {
-    temp = temp * 3 +1
+    temp = temp * 3 + 1
     gaps.push(temp)
   }
   return gaps.reverse()

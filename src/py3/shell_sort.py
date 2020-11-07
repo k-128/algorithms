@@ -3,8 +3,8 @@ from typing import List
 
 
 def get_gaps(size: int) -> List[int]:
-    temp       = size // 2
-    gaps       = [temp]
+    temp = size // 2
+    gaps = [temp]
     while temp > 1:
         temp = temp // 2
         gaps.append(temp)

@@ -44,12 +44,10 @@ func getGapsCiura(size int) []int {
 }
 
 func shellSort(sequence []int) []int {
-	var i_insert int
-	var key int
 	for _, gap := range getGapsCiura(len(sequence)) {
 		for i := gap; i < len(sequence); i++ {
-			i_insert = i
-			key = sequence[i]
+			var i_insert = i
+			var key = sequence[i]
 			for (i_insert >= gap) && (key < sequence[i_insert-gap]) {
 				sequence[i_insert] = sequence[i_insert-gap]
 				i_insert = i_insert - gap
