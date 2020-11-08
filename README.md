@@ -63,6 +63,18 @@
 
 <br />
 
+##### Merge sort
+- Complexity:
+  * Time: O(n log(n)), θ(n log(n)), Ω(n log(n))
+  * Space: O(n)
+- Impl:
+  * C++: [merge_sort.cpp](/src/cpp/merge_sort.cpp)
+  * Golang: [mergesort.go](/src/golang/mergesort.go)
+  * Python3: [merge_sort.py](/src/py3/merge_sort.py)
+  * Typescript: [mergeSort.ts](/src/typescript/mergeSort.ts)
+
+<br />
+
 ##### Selection sort
 - Complexity:
   * Time: O(n²), Θ(n²), θ(n log(n)), Ω(n²)
