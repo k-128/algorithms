@@ -21,11 +21,11 @@ const getGapsKnuth = (size: number): number[] => {
 
 
 const getGapsCiura = (size: number): number[] => {
-  let gaps_init = [1, 4, 10, 23, 57, 132, 301, 701, 1750]
+  let gapsInit = [1, 4, 10, 23, 57, 132, 301, 701, 1750]
   let temp = 1
   let gaps = []
   for (let i = 0; temp < size; i++) {
-    temp = temp >= 1750 ? Math.floor(temp * 2.25) : gaps_init[i]
+    temp = temp >= 1750 ? Math.floor(temp * 2.25) : gapsInit[i]
     gaps.push(temp)
   }
   return gaps.reverse()
@@ -37,13 +37,13 @@ const shellSort = (sequence: number[]): number[] => {
   for (let i=0; i < gaps.length; i++) {
     let gap = gaps[i]
     for (let j=gap; j < sequence.length; j++) {
-      let i_insert = j
+      let iInsert = j
       let key = sequence[j]
-      while ((i_insert >= gap) && (key < sequence[i_insert - gap])) {
-        sequence[i_insert] = sequence[i_insert - gap]
-        i_insert = i_insert - gap
+      while ((iInsert >= gap) && (key < sequence[iInsert - gap])) {
+        sequence[iInsert] = sequence[iInsert - gap]
+        iInsert = iInsert - gap
       }
-      sequence[i_insert] = key
+      sequence[iInsert] = key
     }
   }
   return sequence

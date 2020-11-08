@@ -1,13 +1,13 @@
 const selectionSort = (sequence: number[]): number[] => {
   for (let i = 0; i < sequence.length - 1; i++) {
-    let i_lo_val = i + 1
+    let iLoVal = i + 1
     for (let j = 0; j < sequence.length - 1 - i; j++) {
-      if (sequence[i_lo_val] > sequence[j + i + 1]) {
-        i_lo_val = j + i + 1
+      if (sequence[iLoVal] > sequence[j + i + 1]) {
+        iLoVal = j + i + 1
       }
     }
-    if (sequence[i] > sequence[i_lo_val]) {
-      [sequence[i], sequence[i_lo_val]] = [sequence[i_lo_val], sequence[i]]
+    if (sequence[i] > sequence[iLoVal]) {
+      [sequence[i], sequence[iLoVal]] = [sequence[iLoVal], sequence[i]]
     }
   }
   return sequence

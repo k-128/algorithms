@@ -1,12 +1,12 @@
 const insertionSort = (sequence: number[]): number[] => {
   for (let i = 0; i < sequence.length - 1; i++) {
-    let i_insert = i
+    let iInsert = i
     let key = sequence[i + 1]
-    while ((i_insert >= 0) && (key < sequence[i_insert])) {
-      sequence[i_insert + 1] = sequence[i_insert]
-      i_insert--
+    while ((iInsert >= 0) && (key < sequence[iInsert])) {
+      sequence[iInsert + 1] = sequence[iInsert]
+      iInsert--
     }
-    sequence[i_insert + 1] = key
+    sequence[iInsert + 1] = key
   }
   return sequence
 }
