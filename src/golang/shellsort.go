@@ -28,14 +28,14 @@ func getGapsKnuth(size int) []int {
 }
 
 func getGapsCiura(size int) []int {
-	gaps_init := []int{1, 4, 10, 23, 57, 132, 301, 701, 1750}
+	gapsInit := []int{1, 4, 10, 23, 57, 132, 301, 701, 1750}
 	temp := 1
 	gaps := []int{}
 	for i := 0; temp < size; i++ {
 		if temp >= 1750 {
 			temp = int(math.Floor(float64(temp) * 2.25))
 		} else {
-			temp = gaps_init[i]
+			temp = gapsInit[i]
 		}
 		gaps = append(gaps, temp)
 	}
@@ -46,13 +46,13 @@ func getGapsCiura(size int) []int {
 func shellSort(sequence []int) []int {
 	for _, gap := range getGapsCiura(len(sequence)) {
 		for i := gap; i < len(sequence); i++ {
-			var i_insert = i
+			var iInsert = i
 			var key = sequence[i]
-			for (i_insert >= gap) && (key < sequence[i_insert-gap]) {
-				sequence[i_insert] = sequence[i_insert-gap]
-				i_insert = i_insert - gap
+			for (iInsert >= gap) && (key < sequence[iInsert-gap]) {
+				sequence[iInsert] = sequence[iInsert-gap]
+				iInsert = iInsert - gap
 			}
-			sequence[i_insert] = key
+			sequence[iInsert] = key
 		}
 	}
 	return sequence

@@ -4,13 +4,13 @@ import "fmt"
 
 func insertionSort(sequence []int) []int {
 	for i := 0; i < len(sequence)-1; i++ {
-		var i_insert = i
+		var iInsert = i
 		var key = sequence[i+1]
-		for (i_insert >= 0) && (key < sequence[i_insert]) {
-			sequence[i_insert+1] = sequence[i_insert]
-			i_insert--
+		for (iInsert >= 0) && (key < sequence[iInsert]) {
+			sequence[iInsert+1] = sequence[iInsert]
+			iInsert--
 		}
-		sequence[i_insert+1] = key
+		sequence[iInsert+1] = key
 	}
 	return sequence
 }
