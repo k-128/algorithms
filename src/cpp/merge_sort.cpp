@@ -2,7 +2,7 @@
 #include <vector>
 
 
-void Merge(
+void MergeIntervals(
     std::vector<int>& sequence,
     unsigned int i_front,
     unsigned int i_mid,
@@ -48,7 +48,7 @@ void MergeSort(
         unsigned int mid = (front + end) / 2;
         MergeSort(sequence, front, mid);
         MergeSort(sequence, mid + 1, end);
-        Merge(sequence, front, mid, end);
+        MergeIntervals(sequence, front, mid, end);
     }
 }
 

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func merge(seqLeft []int, seqRight []int) []int {
+func mergeIntervals(seqLeft []int, seqRight []int) []int {
 	var merged []int
 	var kLSeq int
 	var kRSeq int
@@ -35,7 +35,9 @@ func mergeSort(sequence []int) []int {
 	}
 
 	mid := len(sequence) / 2
-	return merge(mergeSort(sequence[:mid]), mergeSort(sequence[mid:]))
+	return mergeIntervals(
+		mergeSort(sequence[:mid]),
+		mergeSort(sequence[mid:]))
 }
 
 func mergeSortTest() {
