@@ -1,7 +1,7 @@
 from typing import List
 
 
-def mergeIntervals(seq_left: List[int], seq_right: List[int]) -> List[int]:
+def merge(seq_left: List[int], seq_right: List[int]) -> List[int]:
     merged = []
     k_lseq = 0
     k_rseq = 0
@@ -30,7 +30,7 @@ def merge_sort(sequence: List[int]) -> List[int]:
         return sequence
 
     mid = len(sequence) // 2
-    return mergeIntervals(
+    return merge(
         merge_sort(sequence[:mid]),
         merge_sort(sequence[mid:])
     )

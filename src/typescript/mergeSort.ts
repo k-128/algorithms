@@ -1,4 +1,4 @@
-const mergeIntervals = (seqLeft: number[], seqRight: number[]): number[] => {
+const merge = (seqLeft: number[], seqRight: number[]): number[] => {
   let merged = []
   let kLSeq = 0
   let kRSeq = 0
@@ -32,7 +32,7 @@ const mergeSort = (sequence: number[]): number[] => {
   }
 
   let mid = Math.floor(sequence.length / 2)
-  return mergeIntervals(
+  return merge(
     mergeSort(sequence.slice(0, mid)),
     mergeSort(sequence.slice(mid, sequence.length))
   )
