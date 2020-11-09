@@ -33,7 +33,7 @@ int main() {
 
     std::cout << "Initial sequence: ";
     PrintSequence(seq);
-    std::cout << "\nSorted sequence : ";
+    std::cout << "Sorted sequence : ";
     PrintSequence(seq_sorted);
 
     return 0;
