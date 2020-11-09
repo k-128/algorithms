@@ -9,28 +9,28 @@ void Merge(
     unsigned int i_end
 ) {
     std::vector<int> merged;
-    unsigned int k_lseq = i_front;
-    unsigned int k_rseq = i_mid + 1;
+    unsigned int i_lseq = i_front;
+    unsigned int i_rseq = i_mid + 1;
 
-    while (k_lseq <= i_mid && k_rseq <= i_end) {
-        if (sequence[k_lseq] <= sequence[k_rseq]) {
-            merged.push_back(sequence[k_lseq]);
-            ++k_lseq;
+    while (i_lseq <= i_mid && i_rseq <= i_end) {
+        if (sequence[i_lseq] <= sequence[i_rseq]) {
+            merged.push_back(sequence[i_lseq]);
+            ++i_lseq;
         }
         else {
-            merged.push_back(sequence[k_rseq]);
-            ++k_rseq;
+            merged.push_back(sequence[i_rseq]);
+            ++i_rseq;
         }
     }
 
-    while (k_lseq <= i_mid) {
-        merged.push_back(sequence[k_lseq]);
-        ++k_lseq;
+    while (i_lseq <= i_mid) {
+        merged.push_back(sequence[i_lseq]);
+        ++i_lseq;
     }
 
-    while (k_rseq <= i_end) {
-        merged.push_back(sequence[k_rseq]);
-        ++k_rseq;
+    while (i_rseq <= i_end) {
+        merged.push_back(sequence[i_rseq]);
+        ++i_rseq;
     }
 
     for (unsigned int i = i_front; i <= i_end; ++i) {
@@ -41,14 +41,21 @@ void Merge(
 
 void MergeSort(
     std::vector<int>& sequence,
-    unsigned int front,
-    unsigned int end
+    unsigned int i_front,
+    unsigned int i_end
 ) {
-    if (front < end) {
-        unsigned int mid = (front + end) / 2;
-        MergeSort(sequence, front, mid);
-        MergeSort(sequence, mid + 1, end);
-        Merge(sequence, front, mid, end);
+    if (i_front < i_end) {
+        unsigned int i_mid = (i_front + i_end) / 2;
+        MergeSort(sequence, i_front, i_mid);
+        MergeSort(sequence, i_mid + 1, i_end);
+        Merge(sequence, i_front, i_mid, i_end);
+    }
+}
+
+
+void PrintSequence(std::vector<int> v) {
+    for (unsigned int i = 0; i < v.size(); ++i) {
+        std::cout << v.at(i) << " ";
     }
 }
 
@@ -59,14 +66,9 @@ int main() {
     MergeSort(seq_sorted, 0, seq_sorted.size() - 1);
 
     std::cout << "Initial sequence: ";
-    for (unsigned int i = 0; i < seq.size(); ++i) {
-        std::cout << seq.at(i) << " ";
-    }
-    MergeSort(seq, 0, seq.size() - 1);
+    PrintSequence(seq);
     std::cout << "\nSorted sequence : ";
-    for (unsigned int i = 0; i < seq.size(); ++i) {
-        std::cout << seq.at(i) << " ";
-    }
+    PrintSequence(seq_sorted);
     std::cout << "\n" << std::endl;
 
     return 0;
