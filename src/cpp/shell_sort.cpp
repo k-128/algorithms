@@ -66,6 +66,7 @@ void PrintSequence(std::vector<int> v) {
     for (unsigned int i = 0; i < v.size(); ++i) {
         std::cout << v.at(i) << " ";
     }
+    std::cout << "\n";
 }
 
 
@@ -76,9 +77,8 @@ int main() {
 
     std::cout << "Initial sequence: ";
     PrintSequence(seq);
-    std::cout << "\nSorted sequence : ";
+    std::cout << "Sorted sequence : ";
     PrintSequence(seq_sorted);
-    std::cout << "\n" << std::endl;
 
     return 0;
 }

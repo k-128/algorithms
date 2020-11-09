@@ -22,6 +22,7 @@ void PrintSequence(std::vector<int> v) {
     for (unsigned int i = 0; i < v.size(); ++i) {
         std::cout << v.at(i) << " ";
     }
+    std::cout << "\n";
 }
 
 
@@ -34,7 +35,6 @@ int main() {
     PrintSequence(seq);
     std::cout << "\nSorted sequence : ";
     PrintSequence(seq_sorted);
-    std::cout << "\n" << std::endl;
 
     return 0;
 }
