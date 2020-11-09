@@ -3,7 +3,7 @@
 
 
 int LinearSearch(std::vector<int> sequence, int query ) {
-    for (unsigned int i = 0; i < sequence.size(); i++) {
+    for (unsigned int i = 0; i < sequence.size(); ++i) {
         if (sequence[i] == query) {
             return i;
         }
@@ -14,10 +14,10 @@ int LinearSearch(std::vector<int> sequence, int query ) {
 
 int main() {
     std::vector<int> seq = {2, 3, 4, 5, 7, 9, 12, 16, 21, 28, 37, 49, 65};
+
     std::cout << "Search result : " << LinearSearch(seq, 7) << "\n";
     std::cout << "Missing query : " << LinearSearch(seq, 6) << "\n";
-    std::cout << "Empty sequence: " << LinearSearch({}, 7) << "\n"
-        << std::endl;
+    std::cout << "Empty sequence: " << LinearSearch({}, 7) << std::endl;
 
     return 0;
 }
