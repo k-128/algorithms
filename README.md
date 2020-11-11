@@ -75,6 +75,18 @@
 
 <br />
 
+##### Quick sort
+- Complexity:
+  * Time: O(n²), θ(n log n), Ω(n log n)
+  * Space: O(n)
+- Impl:
+  * C++: [quick_sort.cpp](/src/cpp/quick_sort.cpp)
+  * Golang: [quicksort.go](/src/golang/quicksort.go)
+  * Python3: [quick_sort.py](/src/py3/quick_sort.py)
+  * Typescript: [quickSort.ts](/src/typescript/quickSort.ts)
+
+<br />
+
 ##### Selection sort
 - Complexity:
   * Time: O(n²), Θ(n²), θ(n log(n)), Ω(n²)
