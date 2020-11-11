@@ -32,28 +32,31 @@ const getGapsCiura = (size: number): number[] => {
 }
 
 
-const shellSort = (sequence: number[]): number[] => {
-  let gaps = getGapsCiura(sequence.length)
+const shellSort = (seq: number[]): void => {
+  let gaps = getGapsCiura(seq.length)
+
   for (let i=0; i < gaps.length; i++) {
     let gap = gaps[i]
-    for (let j=gap; j < sequence.length; j++) {
+    for (let j=gap; j < seq.length; j++) {
       let iInsert = j
-      let key = sequence[j]
-      while ((iInsert >= gap) && (key < sequence[iInsert - gap])) {
-        sequence[iInsert] = sequence[iInsert - gap]
+      let key = seq[j]
+      while ((iInsert >= gap) && (key < seq[iInsert - gap])) {
+        seq[iInsert] = seq[iInsert - gap]
         iInsert = iInsert - gap
       }
-      sequence[iInsert] = key
+      seq[iInsert] = key
     }
   }
-  return sequence
 }
 
 
 const shellSortTest = () => {
   let seq = [16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4]
+  let seq_sorted = Object.assign([], seq)
+  shellSort(seq_sorted)
+
   console.log(`Initial sequence: ${seq}`)
-  console.log(`Sorted sequence : ${shellSort(seq)}`)
+  console.log(`Sorted sequence : ${seq_sorted}`)
 }
 
 shellSortTest()

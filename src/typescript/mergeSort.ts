@@ -1,48 +1,51 @@
-const merge = (seqLeft: number[], seqRight: number[]): number[] => {
-  let merged = []
-  let kLSeq = 0
-  let kRSeq = 0
-  while ((kLSeq < seqLeft.length) && (kRSeq < seqRight.length)) {
-    if (seqLeft[kLSeq] <= seqRight[kRSeq]) {
-      merged.push(seqLeft[kLSeq])
-      kLSeq++
+const merge = (seq: number[], lo: number, mid: number, hi: number): void => {
+  let temp = []
+  let iLSeq = lo
+  let iRSeq = mid + 1
+
+  while ((iLSeq <= mid) && (iRSeq <= hi)) {
+    if (seq[iLSeq] <= seq[iRSeq]) {
+      temp.push(seq[iLSeq])
+      iLSeq++
     } else {
-      merged.push(seqRight[kRSeq])
-      kRSeq++
+      temp.push(seq[iRSeq])
+      iRSeq++
     }
   }
 
-  while (kLSeq < seqLeft.length) {
-    merged.push(seqLeft[kLSeq])
-    kLSeq++
+  while (iLSeq <= mid) {
+    temp.push(seq[iLSeq])
+    iLSeq++
   }
 
-  while (kRSeq < seqRight.length) {
-    merged.push(seqRight[kRSeq])
-    kRSeq++
+  while (iRSeq <= hi) {
+    temp.push(seq[iRSeq])
+    iRSeq++
   }
 
-  return merged
+  for (let i = lo; i <= hi; i++) {
+    seq[i] = temp[i - lo]
+  }
 }
 
 
-const mergeSort = (sequence: number[]): number[] => {
-  if (sequence.length < 2) {
-    return sequence
+const mergeSort = (seq: number[], lo: number, hi: number): void => {
+  if (lo < hi) {
+    let mid = Math.floor((lo + hi) / 2)
+    mergeSort(seq, lo, mid)
+    mergeSort(seq, mid + 1, hi)
+    merge(seq, lo, mid, hi)
   }
-
-  let mid = Math.floor(sequence.length / 2)
-  return merge(
-    mergeSort(sequence.slice(0, mid)),
-    mergeSort(sequence.slice(mid, sequence.length))
-  )
 }
 
 
 const mergeSortTest = () => {
   let seq = [16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4]
+  let seq_sorted = Object.assign([], seq)
+  mergeSort(seq_sorted, 0, seq_sorted.length - 1)
+
   console.log(`Initial sequence: ${seq}`)
-  console.log(`Sorted sequence : ${mergeSort(seq)}`)
+  console.log(`Sorted sequence : ${seq_sorted}`)
 }
 
 mergeSortTest()
