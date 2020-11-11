@@ -2,26 +2,27 @@
 #include <vector>
 
 
-void SelectionSort(std::vector<int>& sequence) {
-    for (unsigned int i = 0; i < sequence.size() - 1; ++i) {
+void SelectionSort(std::vector<int> &seq) {
+    for (size_t i = 0; i < seq.size() - 1; ++i) {
         int i_lo_val = i + 1;
-        for (unsigned int j = 0; j < sequence.size() - 1 - i; ++j) {
-            if (sequence[i_lo_val] > sequence[j + i + 1]) {
+        for (size_t j = 0; j < seq.size() - 1 - i; ++j) {
+            if (seq[i_lo_val] > seq[j + i + 1]) {
                 i_lo_val = j + i + 1;
             }
         }
-        if (sequence[i] > sequence[i_lo_val]) {
-            std::swap(sequence[i], sequence[i_lo_val]);
+        if (seq[i] > seq[i_lo_val]) {
+            std::swap(seq[i], seq[i_lo_val]);
         }
     }
 }
 
 
-void PrintSequence(std::vector<int> v) {
-    for (unsigned int i = 0; i < v.size(); ++i) {
-        std::cout << v.at(i) << " ";
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const std::vector<T> v) {
+    for (size_t i = 0; i < v.size(); ++i) {
+        os << v.at(i) << " ";
     }
-    std::cout << "\n";
+    return os;
 }
 
 
@@ -30,10 +31,8 @@ int main() {
     std::vector<int> seq_sorted(seq);
     SelectionSort(seq_sorted);
 
-    std::cout << "Initial sequence: ";
-    PrintSequence(seq);
-    std::cout << "Sorted sequence : ";
-    PrintSequence(seq_sorted);
+    std::cout << "Initial sequence: " << seq << "\n";
+    std::cout << "Sorted sequence : " << seq_sorted << std::endl;
 
     return 0;
 }

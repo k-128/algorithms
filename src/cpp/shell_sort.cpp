@@ -31,7 +31,7 @@ std::vector<int> GetGapsCiura(int size) {
     int gaps_init[] = {1, 4, 10, 23, 57, 132, 301, 701, 1750};
     int temp = 1;
     std::vector<int> gaps = {};
-    for (unsigned int i = 0; temp < size; ++i) {
+    for (size_t i = 0; temp < size; ++i) {
         if (temp >= 1750) {
             temp = std::floor(temp * 2.25);
         }
@@ -45,28 +45,31 @@ std::vector<int> GetGapsCiura(int size) {
 }
 
 
-void ShellSort(std::vector<int>& sequence) {
-    std::vector<int> gaps = GetGapsCiura(sequence.size());
-    for (unsigned int i = 0; i < gaps.size(); ++i) {
+template <typename T>
+void ShellSort(std::vector<T> &seq) {
+    std::vector<int> gaps = GetGapsCiura(seq.size());
+
+    for (size_t i = 0; i < gaps.size(); ++i) {
         int gap = gaps[i];
-        for (unsigned int j = gap; j < sequence.size(); ++j) {
+        for (size_t j = gap; j < seq.size(); ++j) {
             int i_insert = j;
-            int key = sequence[j];
-            while ((i_insert >= gap) && (key < sequence[i_insert - gap])) {
-                sequence[i_insert] = sequence[i_insert - gap];
+            int key = seq[j];
+            while ((i_insert >= gap) && (key < seq[i_insert - gap])) {
+                seq[i_insert] = seq[i_insert - gap];
                 i_insert = i_insert - gap;
             }
-            sequence[i_insert] = key;
+            seq[i_insert] = key;
         }
     }
 }
 
 
-void PrintSequence(std::vector<int> v) {
-    for (unsigned int i = 0; i < v.size(); ++i) {
-        std::cout << v.at(i) << " ";
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const std::vector<T> v) {
+    for (size_t i = 0; i < v.size(); ++i) {
+        os << v.at(i) << " ";
     }
-    std::cout << "\n";
+    return os;
 }
 
 
@@ -75,10 +78,8 @@ int main() {
     std::vector<int> seq_sorted(seq);
     ShellSort(seq_sorted);
 
-    std::cout << "Initial sequence: ";
-    PrintSequence(seq);
-    std::cout << "Sorted sequence : ";
-    PrintSequence(seq_sorted);
+    std::cout << "Initial sequence: " << seq << "\n";
+    std::cout << "Sorted sequence : " << seq_sorted << std::endl;
 
     return 0;
 }

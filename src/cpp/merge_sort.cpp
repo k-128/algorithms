@@ -2,62 +2,56 @@
 #include <vector>
 
 
-void Merge(
-    std::vector<int>& sequence,
-    unsigned int i_front,
-    unsigned int i_mid,
-    unsigned int i_end
-) {
-    std::vector<int> merged;
-    unsigned int i_lseq = i_front;
-    unsigned int i_rseq = i_mid + 1;
+template <typename T>
+void Merge(std::vector<T> &seq, int lo, int mid, int hi) {
+    std::vector<T> temp;
+    int i_lseq = lo;
+    int i_rseq = mid + 1;
 
-    while (i_lseq <= i_mid && i_rseq <= i_end) {
-        if (sequence[i_lseq] <= sequence[i_rseq]) {
-            merged.push_back(sequence[i_lseq]);
+    while (i_lseq <= mid && i_rseq <= hi) {
+        if (seq[i_lseq] <= seq[i_rseq]) {
+            temp.push_back(seq[i_lseq]);
             ++i_lseq;
         }
         else {
-            merged.push_back(sequence[i_rseq]);
+            temp.push_back(seq[i_rseq]);
             ++i_rseq;
         }
     }
 
-    while (i_lseq <= i_mid) {
-        merged.push_back(sequence[i_lseq]);
+    while (i_lseq <= mid) {
+        temp.push_back(seq[i_lseq]);
         ++i_lseq;
     }
 
-    while (i_rseq <= i_end) {
-        merged.push_back(sequence[i_rseq]);
+    while (i_rseq <= hi) {
+        temp.push_back(seq[i_rseq]);
         ++i_rseq;
     }
 
-    for (unsigned int i = i_front; i <= i_end; ++i) {
-        sequence[i] = merged[i - i_front];
+    for (int i = lo; i <= hi; ++i) {
+        seq[i] = temp[i - lo];
     }
 }
 
 
-void MergeSort(
-    std::vector<int>& sequence,
-    unsigned int i_front,
-    unsigned int i_end
-) {
-    if (i_front < i_end) {
-        unsigned int i_mid = (i_front + i_end) / 2;
-        MergeSort(sequence, i_front, i_mid);
-        MergeSort(sequence, i_mid + 1, i_end);
-        Merge(sequence, i_front, i_mid, i_end);
+template <typename T>
+void MergeSort(std::vector<T> &seq, int lo, int hi) {
+    if (lo < hi) {
+        int mid = (lo + hi) / 2;
+        MergeSort(seq, lo, mid);
+        MergeSort(seq, mid + 1, hi);
+        Merge(seq, lo, mid, hi);
     }
 }
 
 
-void PrintSequence(std::vector<int> v) {
-    for (unsigned int i = 0; i < v.size(); ++i) {
-        std::cout << v.at(i) << " ";
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const std::vector<T> v) {
+    for (size_t i = 0; i < v.size(); ++i) {
+        os << v.at(i) << " ";
     }
-    std::cout << "\n";
+    return os;
 }
 
 
@@ -66,10 +60,8 @@ int main() {
     std::vector<int> seq_sorted(seq);
     MergeSort(seq_sorted, 0, seq_sorted.size() - 1);
 
-    std::cout << "Initial sequence: ";
-    PrintSequence(seq);
-    std::cout << "Sorted sequence : ";
-    PrintSequence(seq_sorted);
+    std::cout << "Initial sequence: " << seq << "\n";
+    std::cout << "Sorted sequence : " << seq_sorted << std::endl;
 
     return 0;
 }

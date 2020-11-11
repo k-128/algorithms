@@ -2,19 +2,20 @@
 #include <vector>
 
 
-int BinarySearch(std::vector<int> sequence, int query) {
-    int low = 0;
-    int high = sequence.size() - 1;
-    while (low <= high) {
-        int mid = (low + high) / 2;
-        if (sequence[mid] == query) {
+template <typename T>
+int BinarySearch(std::vector<T> seq, int query) {
+    int lo = 0;
+    int hi = seq.size() - 1;
+    while (lo <= hi) {
+        int mid = (lo + hi) / 2;
+        if (seq[mid] == query) {
             return mid;
         }
-        else if (sequence[mid] < query) {
-            low = mid + 1;
+        else if (seq[mid] < query) {
+            lo = mid + 1;
         }
         else {
-            high = mid - 1;
+            hi = mid - 1;
         }
     }
     return -1;
@@ -26,7 +27,8 @@ int main() {
 
     std::cout << "Search result : " << BinarySearch(seq, 7) << "\n";
     std::cout << "Missing query : " << BinarySearch(seq, 6) << "\n";
-    std::cout << "Empty sequence: " << BinarySearch({}, 7) << std::endl;
+    std::cout << "Empty sequence: " << BinarySearch(std::vector<int> {}, 7)
+        << std::endl;
 
     return 0;
 }

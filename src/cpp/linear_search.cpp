@@ -2,9 +2,10 @@
 #include <vector>
 
 
-int LinearSearch(std::vector<int> sequence, int query ) {
-    for (unsigned int i = 0; i < sequence.size(); ++i) {
-        if (sequence[i] == query) {
+template <typename T>
+int LinearSearch(std::vector<T> seq, int query ) {
+    for (size_t i = 0; i < seq.size(); ++i) {
+        if (seq[i] == query) {
             return i;
         }
     }
@@ -17,7 +18,8 @@ int main() {
 
     std::cout << "Search result : " << LinearSearch(seq, 7) << "\n";
     std::cout << "Missing query : " << LinearSearch(seq, 6) << "\n";
-    std::cout << "Empty sequence: " << LinearSearch({}, 7) << std::endl;
+    std::cout << "Empty sequence: " << LinearSearch(std::vector<int> {}, 7)
+        << std::endl;
 
     return 0;
 }
