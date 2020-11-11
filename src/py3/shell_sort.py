@@ -35,21 +35,22 @@ def get_gaps_ciura(size: int) -> List[int]:
     return gaps[::-1]
 
 
-def shell_sort(sequence: List[int]) -> List[int]:
-    for gap in get_gaps_ciura(len(sequence)):
-        for i in range(gap, len(sequence)):
+def shell_sort(seq: List[int]) -> None:
+    for gap in get_gaps_ciura(len(seq)):
+        for i in range(gap, len(seq)):
             i_insert = i
-            key = sequence[i]
-            while (i_insert >= gap) and (key < sequence[i_insert - gap]):
-                sequence[i_insert] = sequence[i_insert - gap]
+            key = seq[i]
+            while (i_insert >= gap) and (key < seq[i_insert - gap]):
+                seq[i_insert] = seq[i_insert - gap]
                 i_insert -= gap
 
-            sequence[i_insert] = key
-
-    return sequence
+            seq[i_insert] = key
 
 
 if __name__ == "__main__":
     seq = [16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4]
+    seq_sorted = seq.copy()
+    shell_sort(seq_sorted)
+
     print(f"Initial sequence: {seq}")
-    print(f"Sorted sequence : {shell_sort(seq)}")
+    print(f"Sorted sequence : {seq_sorted}")

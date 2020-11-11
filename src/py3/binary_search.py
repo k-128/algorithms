@@ -1,19 +1,19 @@
 from typing import Sequence
 
 
-def binary_search(sequence: Sequence[int], query: int) -> int:
-    low = 0
-    high = len(sequence) - 1
-    while low <= high:
-        mid = (low + high) // 2
-        if sequence[mid] == query:
+def binary_search(seq: Sequence[int], query: int) -> int:
+    lo = 0
+    hi = len(seq) - 1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if seq[mid] == query:
             return mid
 
-        elif sequence[mid] < query:
-            low = mid + 1
+        elif seq[mid] < query:
+            lo = mid + 1
 
         else:
-            high = mid - 1
+            hi = mid - 1
 
     return -1
 

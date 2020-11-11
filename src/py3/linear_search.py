@@ -1,8 +1,8 @@
 from typing import Sequence
 
 
-def linear_search(sequence: Sequence[int], query: int) -> int:
-    for i, val in enumerate(sequence):
+def linear_search(seq: Sequence[int], query: int) -> int:
+    for i, val in enumerate(seq):
         if val == query:
             return i
 
