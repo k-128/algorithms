@@ -43,23 +43,23 @@ func getGapsCiura(size int) []int {
 	return gaps
 }
 
-func shellSort(sequence []int) []int {
-	for _, gap := range getGapsCiura(len(sequence)) {
-		for i := gap; i < len(sequence); i++ {
-			var iInsert = i
-			var key = sequence[i]
-			for (iInsert >= gap) && (key < sequence[iInsert-gap]) {
-				sequence[iInsert] = sequence[iInsert-gap]
+func shellSort(seq []int) {
+	for _, gap := range getGapsCiura(len(seq)) {
+		for i := gap; i < len(seq); i++ {
+			iInsert := i
+			key := seq[i]
+			for (iInsert >= gap) && (key < seq[iInsert-gap]) {
+				seq[iInsert] = seq[iInsert-gap]
 				iInsert = iInsert - gap
 			}
-			sequence[iInsert] = key
+			seq[iInsert] = key
 		}
 	}
-	return sequence
 }
 
 func shellSortTest() {
 	seq := []int{16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4}
-	fmt.Printf("Initial sequence: %v\n", seq)
-	fmt.Printf("Sorted sequence : %v\n", shellSort(seq))
+	shellSort(seq)
+
+	fmt.Printf("Sorted sequence : %v\n", seq)
 }

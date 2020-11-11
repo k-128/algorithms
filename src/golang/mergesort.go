@@ -2,46 +2,48 @@ package main
 
 import "fmt"
 
-func merge(seqLeft []int, seqRight []int) []int {
-	var merged []int
-	var kLSeq int
-	var kRSeq int
-	for (kLSeq < len(seqLeft)) && (kRSeq < len(seqRight)) {
-		if seqLeft[kLSeq] < seqRight[kRSeq] {
-			merged = append(merged, seqLeft[kLSeq])
-			kLSeq++
+func merge(seq []int, lo int, mid int, hi int) {
+	var temp []int
+	iLSeq := lo
+	iRSeq := mid + 1
+
+	for (iLSeq <= mid) && (iRSeq <= hi) {
+		if seq[iLSeq] <= seq[iRSeq] {
+			temp = append(temp, seq[iLSeq])
+			iLSeq++
 		} else {
-			merged = append(merged, seqRight[kRSeq])
-			kRSeq++
+			temp = append(temp, seq[iRSeq])
+			iRSeq++
 		}
 	}
 
-	for kLSeq < len(seqLeft) {
-		merged = append(merged, seqLeft[kLSeq])
-		kLSeq++
+	for iLSeq <= mid {
+		temp = append(temp, seq[iLSeq])
+		iLSeq++
 	}
 
-	for kRSeq < len(seqRight) {
-		merged = append(merged, seqRight[kRSeq])
-		kRSeq++
+	for iRSeq <= hi {
+		temp = append(temp, seq[iRSeq])
+		iRSeq++
 	}
 
-	return merged
+	for i := lo; i <= hi; i++ {
+		seq[i] = temp[i-lo]
+	}
 }
 
-func mergeSort(sequence []int) []int {
-	if len(sequence) < 2 {
-		return sequence
+func mergeSort(seq []int, lo int, hi int) {
+	if lo < hi {
+		mid := (lo + hi) / 2
+		mergeSort(seq, lo, mid)
+		mergeSort(seq, mid+1, hi)
+		merge(seq, lo, mid, hi)
 	}
-
-	mid := len(sequence) / 2
-	return merge(
-		mergeSort(sequence[:mid]),
-		mergeSort(sequence[mid:]))
 }
 
 func mergeSortTest() {
-	var seq = []int{16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4}
-	fmt.Printf("Initial sequence: %v\n", seq)
-	fmt.Printf("Sorted sequence : %v\n", mergeSort(seq))
+	seq := []int{16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4}
+	mergeSort(seq, 0, len(seq)-1)
+
+	fmt.Printf("Sorted sequence : %v\n", seq)
 }
