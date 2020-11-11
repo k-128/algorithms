@@ -9,7 +9,7 @@ std::vector<int> GetGaps(int size) {
     std::vector<int> gaps = {temp};
     while (temp > 1) {
         temp = temp / 2;
-        gaps.insert(gaps.end(), temp);
+        gaps.push_back(temp);
     }
     return gaps;
 }
@@ -20,7 +20,7 @@ std::vector<int> GetGapsKnuth(int size) {
     std::vector<int> gaps = {temp};
     while (temp < size) {
         temp = temp * 3 + 1;
-        gaps.insert(gaps.end(), temp);
+        gaps.push_back(temp);
     }
     std::reverse(gaps.begin(), gaps.end());
     return gaps;
@@ -38,7 +38,7 @@ std::vector<int> GetGapsCiura(int size) {
         else {
             temp = gaps_init[i];
         }
-        gaps.insert(gaps.end(), temp);
+        gaps.push_back(temp);
     }
     std::reverse(gaps.begin(), gaps.end());
     return gaps;
