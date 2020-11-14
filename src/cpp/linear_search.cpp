@@ -3,7 +3,7 @@
 
 
 template <typename T>
-int LinearSearch(std::vector<T> seq, int query ) {
+int LinearSearch(std::vector<T> seq, int query) {
     for (size_t i = 0; i < seq.size(); ++i) {
         if (seq[i] == query) {
             return i;
