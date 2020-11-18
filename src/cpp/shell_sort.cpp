@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include <algorithm>
 #include <math.h>
 
@@ -52,8 +53,8 @@ void ShellSort(std::vector<T> &seq) {
     for (size_t i = 0; i < gaps.size(); ++i) {
         int gap = gaps[i];
         for (size_t j = gap; j < seq.size(); ++j) {
-            int i_insert = j;
-            int key = seq[j];
+            size_t i_insert = j;
+            T key = seq[j];
             while ((i_insert >= gap) && (key < seq[i_insert - gap])) {
                 seq[i_insert] = seq[i_insert - gap];
                 i_insert = i_insert - gap;
@@ -74,12 +75,18 @@ std::ostream &operator<<(std::ostream &os, const std::vector<T> v) {
 
 
 int main() {
-    std::vector<int> seq = {16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4};
-    std::vector<int> seq_sorted(seq);
-    ShellSort(seq_sorted);
+    std::vector<int> seq_1 = {16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4};
+    std::vector<int> seq_1_sorted(seq_1);
+    std::vector<std::string> seq_2 = {
+        "p", "g", "i", "j", "65", "W", "K", "c", "B", "b", "21", "l", "d"
+    };
+    std::vector<std::string> seq_2_sorted(seq_2);
+    ShellSort(seq_1_sorted);
+    ShellSort(seq_2_sorted);
 
-    std::cout << "Initial sequence: " << seq << "\n";
-    std::cout << "Sorted sequence : " << seq_sorted << std::endl;
+    std::cout << "seq_1: " << seq_1 << "\nseq_1_sorted: " << seq_1_sorted
+        << "\nseq_2: " << seq_2 << "\nseq_2_sorted: " << seq_2_sorted
+        << std::endl;
 
     return 0;
 }
