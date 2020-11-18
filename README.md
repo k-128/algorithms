@@ -54,6 +54,16 @@
 
 <br />
 
+##### Heap sort
+- Complexity:
+  * Time: O(n log(n)), θ(n log(n)), Ω(n log(n))
+  * Space: O(n)
+- Impl:
+  * C++: [heap_sort.cpp](/src/cpp/heap_sort.cpp)
+  * Python3: [heap_sort.py](/src/py3/heap_sort.py)
+
+<br />
+
 ##### Insertion sort
 - Complexity:
   * Time: O(n²), θ(n²), Ω(n)
