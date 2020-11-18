@@ -1,4 +1,4 @@
-const merge = (seq: number[], lo: number, mid: number, hi: number): void => {
+const _merge = (seq: number[], lo: number, mid: number, hi: number): void => {
   let temp = []
   let iLSeq = lo
   let iRSeq = mid + 1
@@ -29,20 +29,25 @@ const merge = (seq: number[], lo: number, mid: number, hi: number): void => {
 }
 
 
-const mergeSort = (seq: number[], lo: number, hi: number): void => {
+const _mergeSort = (seq: number[], lo: number, hi: number): void => {
   if (lo < hi) {
     let mid = Math.floor((lo + hi) / 2)
-    mergeSort(seq, lo, mid)
-    mergeSort(seq, mid + 1, hi)
-    merge(seq, lo, mid, hi)
+    _mergeSort(seq, lo, mid)
+    _mergeSort(seq, mid + 1, hi)
+    _merge(seq, lo, mid, hi)
   }
+}
+
+
+const mergeSort = (seq: number[]): void => {
+  _mergeSort(seq, 0, seq.length - 1)
 }
 
 
 const mergeSortTest = () => {
   let seq = [16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4]
   let seq_sorted = Object.assign([], seq)
-  mergeSort(seq_sorted, 0, seq_sorted.length - 1)
+  mergeSort(seq_sorted)
 
   console.log(`Initial sequence: ${seq}`)
   console.log(`Sorted sequence : ${seq_sorted}`)
