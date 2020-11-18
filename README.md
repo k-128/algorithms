@@ -60,7 +60,10 @@
   * Space: O(n)
 - Impl:
   * C++: [heap_sort.cpp](/src/cpp/heap_sort.cpp)
+  * Golang: [heapsort.go](/src/golang/heapsort.go)
   * Python3: [heap_sort.py](/src/py3/heap_sort.py)
+  * Rust: [heap_sort.rs](/src/rust/heap_sort.rs)
+  * Typescript: [heap_sort.ts](/src/typescript/heap_sort.ts)
 
 <br />
 
