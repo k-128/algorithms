@@ -1,5 +1,5 @@
 from math import floor
-from typing import List
+from typing import List, Any
 
 
 def get_gaps(size: int) -> List[int]:
@@ -35,7 +35,7 @@ def get_gaps_ciura(size: int) -> List[int]:
     return gaps[::-1]
 
 
-def shell_sort(seq: List[int]) -> None:
+def shell_sort(seq: List[Any]) -> None:
     for gap in get_gaps_ciura(len(seq)):
         for i in range(gap, len(seq)):
             i_insert = i
@@ -48,9 +48,12 @@ def shell_sort(seq: List[int]) -> None:
 
 
 if __name__ == "__main__":
-    seq = [16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4]
-    seq_sorted = seq.copy()
-    shell_sort(seq_sorted)
+    seq_1 = [16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4]
+    seq_1_sorted = seq_1.copy()
+    seq_2 = ["p", "g", "i", "j", "65", "W", "K", "c", "B", "b", "21", "l", "d"]
+    seq_2_sorted = seq_2.copy()
+    shell_sort(seq_1_sorted)
+    shell_sort(seq_2_sorted)
 
-    print(f"Initial sequence: {seq}")
-    print(f"Sorted sequence : {seq_sorted}")
+    print(f"seq_1: {seq_1}\nseq_1_sorted: {seq_1_sorted}")
+    print(f"seq_2: {seq_2}\nseq_2_sorted: {seq_2_sorted}")
