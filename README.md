@@ -63,7 +63,7 @@
   * Golang: [heapsort.go](/src/golang/heapsort.go)
   * Python3: [heap_sort.py](/src/py3/heap_sort.py)
   * Rust: [heap_sort.rs](/src/rust/heap_sort.rs)
-  * Typescript: [heap_sort.ts](/src/typescript/heap_sort.ts)
+  * Typescript: [heapSort.ts](/src/typescript/heapSort.ts)
 
 <br />
 
