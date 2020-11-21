@@ -54,6 +54,19 @@
 
 <br />
 
+##### Counting sort
+- Complexity:
+  * Time: O(n+k), θ(n+k), Ω(n+k)
+  * Space: O(n+k)
+- Impl:
+  * C++: [counting_sort.cpp](/src/cpp/counting_sort.cpp)
+  * Golang: [countingsort.go](/src/golang/countingsort.go)
+  * Python3: [counting_sort.py](/src/py3/counting_sort.py)
+  * Rust: [counting_sort.rs](/src/rust/counting_sort.rs)
+  * Typescript: [countingSort.ts](/src/typescript/countingSort.ts)
+
+<br />
+
 ##### Heap sort
 - Complexity:
   * Time: O(n log(n)), θ(n log(n)), Ω(n log(n))
