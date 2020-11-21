@@ -5,9 +5,9 @@
 #include <math.h>
 
 
-std::vector<int> GetGaps(int size) {
-    int temp = size / 2;
-    std::vector<int> gaps = {temp};
+std::vector<size_t> _get_gaps(size_t size) {
+    size_t temp = size / 2;
+    std::vector<size_t> gaps = {temp};
     while (temp > 1) {
         temp = temp / 2;
         gaps.push_back(temp);
@@ -16,9 +16,9 @@ std::vector<int> GetGaps(int size) {
 }
 
 
-std::vector<int> GetGapsKnuth(int size) {
-    int temp = 1;
-    std::vector<int> gaps = {temp};
+std::vector<size_t> _get_gaps_knuth(size_t size) {
+    size_t temp = 1;
+    std::vector<size_t> gaps = {temp};
     while (temp < size) {
         temp = temp * 3 + 1;
         gaps.push_back(temp);
@@ -28,10 +28,10 @@ std::vector<int> GetGapsKnuth(int size) {
 }
 
 
-std::vector<int> GetGapsCiura(int size) {
-    int gaps_init[] = {1, 4, 10, 23, 57, 132, 301, 701, 1750};
-    int temp = 1;
-    std::vector<int> gaps = {};
+std::vector<size_t> _get_gaps_ciura(size_t size) {
+    size_t gaps_init[] = {1, 4, 10, 23, 57, 132, 301, 701, 1750};
+    size_t temp = 1;
+    std::vector<size_t> gaps = {};
     for (size_t i = 0; temp < size; ++i) {
         if (temp >= 1750) {
             temp = std::floor(temp * 2.25);
@@ -47,11 +47,15 @@ std::vector<int> GetGapsCiura(int size) {
 
 
 template <typename T>
-void ShellSort(std::vector<T> &seq) {
-    std::vector<int> gaps = GetGapsCiura(seq.size());
+void shell_sort(std::vector<T> &seq) {
+    if (seq.size() == 0) {
+        return;
+    }
+
+    std::vector<size_t> gaps = _get_gaps_ciura(seq.size());
 
     for (size_t i = 0; i < gaps.size(); ++i) {
-        int gap = gaps[i];
+        size_t gap = gaps[i];
         for (size_t j = gap; j < seq.size(); ++j) {
             size_t i_insert = j;
             T key = seq[j];
@@ -74,19 +78,52 @@ std::ostream &operator<<(std::ostream &os, const std::vector<T> v) {
 }
 
 
+template <typename T>
+bool is_sorted(std::vector<T> v) {
+    for (size_t i = 0; i < v.size() - 1; ++i) {
+        if (v.at(i) > v.at(i+1)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+void run_tests() {
+    // Empty
+    std::vector<int> v;
+    std::cout << "test_empty... ";
+    shell_sort(v);
+    std::cout << (v.size() == 0 ? "passed" : "failed") << "." << "\n";
+
+    // +
+    v = {16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4};
+    std::cout << "test_int_1... ";
+    shell_sort(v);
+    std::cout << (is_sorted(v) ? "passed" : "failed") << ": " << v << "\n";
+
+    // +, -
+    v = {-16, 7, -9, 5, -65, 49, -37, 3, -28, 2, -21, 12, -4};
+    std::cout << "test_int_2... ";
+    shell_sort(v);
+    std::cout << (is_sorted(v) ? "passed" : "failed") << ": " << v << "\n";
+
+    // +, -, =
+    v = {1, 2, -4, -7, 1, 9, -7, 2, 2, 6, 1, 12, 4};
+    std::cout << "test_int_3... ";
+    shell_sort(v);
+    std::cout << (is_sorted(v) ? "passed" : "failed") << ": " << v << "\n";
+
+    // string
+    std::vector<std::string> vs;
+    vs = {"p", "g", "i", "j", "65", "W", "K", "c", "B", "b", "21", "l", "d"};
+    std::cout << "test_string.. ";
+    shell_sort(vs);
+    std::cout << (is_sorted(vs) ? "passed" : "failed") << ": " << vs << "\n";
+}
+
+
 int main() {
-    std::vector<int> seq_1 = {16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4};
-    std::vector<int> seq_1_sorted(seq_1);
-    std::vector<std::string> seq_2 = {
-        "p", "g", "i", "j", "65", "W", "K", "c", "B", "b", "21", "l", "d"
-    };
-    std::vector<std::string> seq_2_sorted(seq_2);
-    ShellSort(seq_1_sorted);
-    ShellSort(seq_2_sorted);
-
-    std::cout << "seq_1: " << seq_1 << "\nseq_1_sorted: " << seq_1_sorted
-        << "\nseq_2: " << seq_2 << "\nseq_2_sorted: " << seq_2_sorted
-        << std::endl;
-
+    run_tests();
     return 0;
 }

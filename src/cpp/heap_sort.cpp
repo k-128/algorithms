@@ -4,7 +4,7 @@
 
 
 template <typename T>
-void MaxHeapify(std::vector<T> &seq, size_t i_root, size_t heap_size) {
+void max_heapify(std::vector<T> &seq, size_t i_root, size_t heap_size) {
     size_t i_max   = i_root;
     size_t i_left  = i_root * 2 + 1;
     size_t i_right = i_root * 2 + 2;
@@ -19,27 +19,31 @@ void MaxHeapify(std::vector<T> &seq, size_t i_root, size_t heap_size) {
 
     if (i_max != i_root) {
         std::swap(seq[i_max], seq[i_root]);
-        MaxHeapify(seq, i_max, heap_size);
+        max_heapify(seq, i_max, heap_size);
     }
 }
 
 
 template <typename T>
-void BuildMaxHeap(std::vector<T> &seq, size_t heap_size) {
+void build_max_heap(std::vector<T> &seq, size_t heap_size) {
     for (size_t i = heap_size / 2; i > 0; --i) {
-        MaxHeapify(seq, i-1, heap_size);
+        max_heapify(seq, i-1, heap_size);
     }
 }
 
 
 template <typename T>
-void HeapSort(std::vector<T> &seq) {
+void heap_sort(std::vector<T> &seq) {
+    if (seq.size() == 0) {
+        return;
+    }
+
     size_t n = seq.size();
-    BuildMaxHeap(seq, n);
+    build_max_heap(seq, n);
 
     for (size_t i = n - 1; i > 0; --i) {
         std::swap(seq[0], seq[i]);
-        MaxHeapify(seq, 0, i);
+        max_heapify(seq, 0, i);
     }
 }
 
@@ -53,19 +57,52 @@ std::ostream &operator<<(std::ostream &os, const std::vector<T> v) {
 }
 
 
+template <typename T>
+bool is_sorted(std::vector<T> v) {
+    for (size_t i = 0; i < v.size() - 1; ++i) {
+        if (v.at(i) > v.at(i+1)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+void run_tests() {
+    // Empty
+    std::vector<int> v;
+    std::cout << "test_empty... ";
+    heap_sort(v);
+    std::cout << (v.size() == 0 ? "passed" : "failed") << "." << "\n";
+
+    // +
+    v = {16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4};
+    std::cout << "test_int_1... ";
+    heap_sort(v);
+    std::cout << (is_sorted(v) ? "passed" : "failed") << ": " << v << "\n";
+
+    // +, -
+    v = {-16, 7, -9, 5, -65, 49, -37, 3, -28, 2, -21, 12, -4};
+    std::cout << "test_int_2... ";
+    heap_sort(v);
+    std::cout << (is_sorted(v) ? "passed" : "failed") << ": " << v << "\n";
+
+    // +, -, =
+    v = {1, 2, -4, -7, 1, 9, -7, 2, 2, 6, 1, 12, 4};
+    std::cout << "test_int_3... ";
+    heap_sort(v);
+    std::cout << (is_sorted(v) ? "passed" : "failed") << ": " << v << "\n";
+
+    // string
+    std::vector<std::string> vs;
+    vs = {"p", "g", "i", "j", "65", "W", "K", "c", "B", "b", "21", "l", "d"};
+    std::cout << "test_string.. ";
+    heap_sort(vs);
+    std::cout << (is_sorted(vs) ? "passed" : "failed") << ": " << vs << "\n";
+}
+
+
 int main() {
-    std::vector<int> seq_1 = {16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4};
-    std::vector<int> seq_1_sorted(seq_1);
-    std::vector<std::string> seq_2 = {
-        "p", "g", "i", "j", "65", "W", "K", "c", "B", "b", "21", "l", "d"
-    };
-    std::vector<std::string> seq_2_sorted(seq_2);
-    HeapSort(seq_1_sorted);
-    HeapSort(seq_2_sorted);
-
-    std::cout << "seq_1: " << seq_1 << "\nseq_1_sorted: " << seq_1_sorted
-        << "\nseq_2: " << seq_2 << "\nseq_2_sorted: " << seq_2_sorted
-        << std::endl;
-
+    run_tests();
     return 0;
 }
