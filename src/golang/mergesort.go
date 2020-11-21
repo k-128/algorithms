@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func merge(seq []int, lo int, mid int, hi int) {
+func _merge(seq []int, lo int, mid int, hi int) {
 	var temp []int
 	iLSeq := lo
 	iRSeq := mid + 1
@@ -32,18 +32,58 @@ func merge(seq []int, lo int, mid int, hi int) {
 	}
 }
 
-func mergeSort(seq []int, lo int, hi int) {
+func _mergeSort(seq []int, lo int, hi int) {
 	if lo < hi {
 		mid := (lo + hi) / 2
-		mergeSort(seq, lo, mid)
-		mergeSort(seq, mid+1, hi)
-		merge(seq, lo, mid, hi)
+		_mergeSort(seq, lo, mid)
+		_mergeSort(seq, mid+1, hi)
+		_merge(seq, lo, mid, hi)
 	}
 }
 
-func mergeSortTest() {
-	seq := []int{16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4}
-	mergeSort(seq, 0, len(seq)-1)
+func mergeSort(seq []int) {
+	_mergeSort(seq, 0, len(seq)-1)
+}
 
-	fmt.Printf("Sorted sequence : %v\n", seq)
+func mergeSortTest() {
+	isSorted := func(seq []int) bool {
+		for i := 0; i < len(seq)-1; i++ {
+			if seq[i] > seq[i+1] {
+				return false
+			}
+		}
+		return true
+	}
+
+	// Empty
+	seq := []int{}
+	fmt.Printf("test_empty: ")
+	mergeSort(seq)
+	if isSorted(seq) {
+		fmt.Printf("passed: %v\n", seq)
+	}
+
+	// +
+	seq = []int{16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4}
+	fmt.Printf("test_int_1: ")
+	mergeSort(seq)
+	if isSorted(seq) {
+		fmt.Printf("passed: %v\n", seq)
+	}
+
+	// +, -
+	seq = []int{-16, 7, -9, 5, -65, 49, -37, 3, -28, 2, -21, 12, -4}
+	fmt.Printf("test_int_2: ")
+	mergeSort(seq)
+	if isSorted(seq) {
+		fmt.Printf("passed: %v\n", seq)
+	}
+
+	// +, -, =
+	seq = []int{1, 2, -4, -7, 1, 9, -7, 2, 2, 6, 1, 12, 4}
+	fmt.Printf("test_int_3: ")
+	mergeSort(seq)
+	if isSorted(seq) {
+		fmt.Printf("passed: %v\n", seq)
+	}
 }

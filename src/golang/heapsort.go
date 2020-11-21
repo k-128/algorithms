@@ -38,8 +38,44 @@ func heapSort(seq []int) {
 }
 
 func heapSortTest() {
-	seq := []int{16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4}
-	heapSort(seq)
+	isSorted := func(seq []int) bool {
+		for i := 0; i < len(seq)-1; i++ {
+			if seq[i] > seq[i+1] {
+				return false
+			}
+		}
+		return true
+	}
 
-	fmt.Printf("Sorted sequence : %v\n", seq)
+	// Empty
+	seq := []int{}
+	fmt.Printf("test_empty: ")
+	heapSort(seq)
+	if isSorted(seq) {
+		fmt.Printf("passed: %v\n", seq)
+	}
+
+	// +
+	seq = []int{16, 7, 9, 5, 65, 49, 37, 3, 28, 2, 21, 12, 4}
+	fmt.Printf("test_int_1: ")
+	heapSort(seq)
+	if isSorted(seq) {
+		fmt.Printf("passed: %v\n", seq)
+	}
+
+	// +, -
+	seq = []int{-16, 7, -9, 5, -65, 49, -37, 3, -28, 2, -21, 12, -4}
+	fmt.Printf("test_int_2: ")
+	heapSort(seq)
+	if isSorted(seq) {
+		fmt.Printf("passed: %v\n", seq)
+	}
+
+	// +, -, =
+	seq = []int{1, 2, -4, -7, 1, 9, -7, 2, 2, 6, 1, 12, 4}
+	fmt.Printf("test_int_3: ")
+	heapSort(seq)
+	if isSorted(seq) {
+		fmt.Printf("passed: %v\n", seq)
+	}
 }
